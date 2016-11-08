@@ -1,3 +1,5 @@
+//Hello!
+
 PImage img = createImage(200, 200, RGB);
 PFont intro;
 
