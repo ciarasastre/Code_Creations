@@ -34,11 +34,14 @@ void draw()
   {
     case(0):
     {
-      background(255);
+      background(0);
       //Load in thumb image
-      img = loadImage("thumb.jpg");
+      img = loadImage("green_thumb.jpg");
        
-      image(img, 220, 90);
+      img.resize(300,400);
+      image(img, 260, 150);
+      //img.resize(200,200);
+      
       
       fill(0, 255, 0);
       noStroke();
@@ -52,7 +55,7 @@ void draw()
       
       if(scanComplete == false)
       {
-        fill(0);
+        fill(255, 0, 0);
         textSize(100);
         textFont(intro);
         text("Finger Identification Required:", 50, 100);
