@@ -36,10 +36,7 @@ void draw()
   switch(simState)
   {
     case(0):
-    {
-      //Get unmovable picture in
-      //thumb();
-      
+    {      
       fill(0, 255, 0);
       noStroke();
       rect(x, y, w, h);
@@ -63,10 +60,14 @@ void draw()
         {
            //Do operation
               
-              fill(0, 255, 0);
+              fill(0, 0, 255);
               textSize(100);
               textFont(intro);
-              text("[ Finger Scanning Complete ]", 150, 100);
+              for(int i =0; i<3; i++)
+              {
+                
+                text("[ Finger Scanning Complete ]", 150, 250);
+              }
               
     
         } 
@@ -76,26 +77,31 @@ void draw()
      
      case(1):
      {
-       if (millis() - startTime > 10000) //After 8 second this will apear
+       /*if (millis() - startTime > 10000) //After 8 second this will apear
         {
           //fill(0);
           //rect(0, 0,width, height);
           
           planet();
 
-        }
+        }*/
      }//end case(1)
-   }//end switch
+     
+     case(2):
+     {
+       //Draw stars
+       if(stars == true)
+       {
+         fill(0, 10);
+         rect(0, 0,width, height);
+    
+         fill(255);
+         ellipse( random(0, width), random(0, height), 10, 10);
+       }
+     }//end case 2
    
-   //Draw stars
-   if(stars == true)
-   {
-     fill(0, 10);
-     rect(0, 0,width, height);
+   }//end switch
   
-     fill(255);
-     ellipse( random(0, width), random(0, height), 10, 10);
-   }
     
 }//end draw()
 
