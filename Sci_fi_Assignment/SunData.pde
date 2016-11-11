@@ -10,8 +10,8 @@ class SunData
   SunData()
   {
     cSunSize = 150;
-    cSunX = 250;
-    cSunY = 250;
+    cSunX = 450;
+    cSunY = 300;
     distance = 120;
     shrink = 100;
   }

@@ -14,6 +14,8 @@ void setup()
   simState = 0;
   lights();
   
+  background(0);
+  
   //This is for the spiral
   cx = width / 2;
   cy = height / 2;
@@ -99,28 +101,24 @@ void draw()
      
      case(2):
      {
-       if (millis() - startTime > 20000) //After 20 second this will apear
-        {
-          //Draw stars
-       
-       {
-         fill(0, 10);
-         rect(0, 0,width, height);
-    
-         fill(255);
-         ellipse( random(0, width), random(0, height), 10, 10);
-       }
-       
-          //Now to create the Planet
+          
+         
+          noStroke();
+          fill(0, 10);
+          rect(0, 0,width, height);
+      
+      //Now to create the Planet
           pushMatrix();
           translate(500, height*0.35, -500); // X, Y,Z Z controls how far away it is
           noFill();
           stroke(0, 255, 0);
           sphere(180); //Controls size of sphere
           popMatrix(); 
-
-        }
-        break;
+          
+           fill(255);
+           ellipse( random(0, width), random(0, height), 10, 10);
+            
+           break;  
      }//end case(2)
 
    
