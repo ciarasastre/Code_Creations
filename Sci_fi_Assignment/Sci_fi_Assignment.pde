@@ -1,11 +1,15 @@
-PImage img = createImage(200, 200, RGB);
 PFont intro;
+
+//CLASSES
+SunData sun;
 
 void setup()
 {
   size(900,600, P3D);
   intro = loadFont("ARDESTINE-48.vlw");
   cursor(HAND);
+  
+  sun = new SunData();
   startTime = millis();
   simState = 0;
   lights();
@@ -14,7 +18,8 @@ void setup()
   cx = width / 2;
   cy = height / 2;
   
-  thumb(); 
+  //Sun is called here at the begginnnig
+
 }
 
 //This is for the into scanner
@@ -22,10 +27,6 @@ int startTime;
 int simState; //This is the state of the simulation
 
 int frame = 100;
-//int x = 0;
-//int y = -50;
-//int w = 900;
-//int h = 50;
 
 //This section is for the spiral
 float cx, cy;
@@ -44,7 +45,7 @@ boolean scanComplete = false;
 
 void draw()
 {
-  simState = 0;
+  //simState = 0;
   
   switch(simState)
   {
@@ -52,10 +53,8 @@ void draw()
     {
       if(down == false)
       {
-      fill(255, 0, 0);
-      textSize(100);
-      textFont(intro);
-      text("[ Finger Identification Required ]", 100, 100);
+        background(0);
+        sun.display();
       }
       else
       {
@@ -70,13 +69,19 @@ void draw()
         b += .6;
         g += .3;
         r += .1;
-  
+        
+        println("Blue is %d", b);
         ellipse(spiralX, spiralY, r2, r2);
         theta += 0.1f;
   
         r1 ++;
         r2 += 1; 
-    
+        
+        //If its completed move on
+        if(b >= 400)
+        {
+          simState = 1;
+        }
       }
      break;
      }//end case(0)
@@ -86,11 +91,8 @@ void draw()
        fill(0, 0, 255);
        textSize(100);
        textFont(intro);
-       for(int i =0; i<3; i++)
-       {
-                
-         text("[ Finger Scanning Complete ]", 150, 250);
-       }
+       text("[ Welcome back Commander ]", 150, 250);
+       simState = 2;
        break;
      }//end case(1)
      
@@ -124,7 +126,6 @@ void draw()
    
   }//end switch
   
-    
 }//end draw()
 
 void mousePressed()
@@ -133,18 +134,6 @@ void mousePressed()
   scanComplete = true;
 }
 
-void thumb()
-{
-  fill(0);
-  rect(0, 0,width, height);
-      
-  //Load in thumb image
-  img = loadImage("green_thumb.jpg");
-       
-  img.resize(300,400);
-  image(img, 260, 150);
-  
-}
 /*void planet()
 {
   
