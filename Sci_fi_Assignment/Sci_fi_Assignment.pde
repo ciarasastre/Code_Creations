@@ -7,7 +7,7 @@ void setup()
   intro = loadFont("ARDESTINE-48.vlw");
   cursor(HAND);
   startTime = millis();
-  //simState = 0;
+  simState = 0;
   lights();
   
   //This is for the spiral
@@ -19,7 +19,7 @@ void setup()
 
 //This is for the into scanner
 int startTime;
-//int simState; //This is the state of the simulation
+int simState; //This is the state of the simulation
 
 int frame = 100;
 //int x = 0;
@@ -44,19 +44,27 @@ boolean scanComplete = false;
 
 void draw()
 {
-  //switch(simState)
-  //{
-    //case(0):
-    //{      
-    
-      if(down == true)
+  simState = 0;
+  
+  switch(simState)
+  {
+    case(0):
+    {
+      if(down == false)
       {
+      fill(255, 0, 0);
+      textSize(100);
+      textFont(intro);
+      text("[ Finger Identification Required ]", 100, 100);
+      }
+      else
+      {
+        //Spiral
         float spiralX = cx + sin(theta) * r1;
         float spiralY = cy - cos(theta) * r1;
 
-        //Spiral
-        noStroke();
         //Colour time!
+        noStroke();
         fill(r,g,b); //RGB
   
         b += .6;
@@ -67,40 +75,28 @@ void draw()
         theta += 0.1f;
   
         r1 ++;
-        r2 += 1;
+        r2 += 1; 
     
       }
-      
-      if(scanComplete == false)
-      {
-        fill(255, 0, 0);
-        textSize(100);
-        textFont(intro);
-        text("[ Finger Identification Required ]", 100, 100);
-      }
-      else
-      {
-        if (millis() - startTime > 10000) //After 10 second this will apear
-        {
-           //Do operation
-              
-              fill(0, 0, 255);
-              textSize(100);
-              textFont(intro);
-              for(int i =0; i<3; i++)
-              {
-                
-                text("[ Finger Scanning Complete ]", 150, 250);
-              }
-              
-    
-        } 
-      }
-      
-     //}//end case(0)
+     break;
+     }//end case(0)
      
-     //case(1):
-     //{
+     case(1):
+     {
+       fill(0, 0, 255);
+       textSize(100);
+       textFont(intro);
+       for(int i =0; i<3; i++)
+       {
+                
+         text("[ Finger Scanning Complete ]", 150, 250);
+       }
+       break;
+     }//end case(1)
+     
+     
+     case(2):
+     {
        if (millis() - startTime > 20000) //After 20 second this will apear
         {
           //Draw stars
@@ -122,14 +118,11 @@ void draw()
           popMatrix(); 
 
         }
-     //}//end case(1)
-     
-     //case(2):
-     //{
-       
-     //}//end case 2
+        break;
+     }//end case(2)
+
    
-  // }//end switch
+  }//end switch
   
     
 }//end draw()
