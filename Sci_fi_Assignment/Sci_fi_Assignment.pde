@@ -106,17 +106,9 @@ void draw()
           noStroke();
           fill(0, 10);
           rect(0, 0,width, height);
-      
-      //Now to create the Planet
-          pushMatrix();
-          translate(500, height*0.35, -500); // X, Y,Z Z controls how far away it is
-          noFill();
-          stroke(0, 255, 0);
-          sphere(180); //Controls size of sphere
-          popMatrix(); 
           
-           fill(255);
-           ellipse( random(0, width), random(0, height), 10, 10);
+          fill(255);
+          ellipse( random(0, width), random(0, height), 10, 10);
             
            break;  
      }//end case(2)
