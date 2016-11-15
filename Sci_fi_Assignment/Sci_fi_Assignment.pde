@@ -20,7 +20,7 @@ void setup()
   cx = width / 2;
   cy = height / 2;
   
-  //Sun is called here at the begginnnig
+  //Sun is called here at the beggining
 
 }
 
@@ -47,8 +47,6 @@ boolean scanComplete = false;
 
 void draw()
 {
-  //simState = 0;
-  
   switch(simState)
   {
     case(0):
@@ -60,33 +58,11 @@ void draw()
       }
       else
       {
-        //Spiral
-        float spiralX = cx + sin(theta) * r1;
-        float spiralY = cy - cos(theta) * r1;
-
-        //Colour time!
-        noStroke();
-        fill(r,g,b); //RGB
-  
-        b += .6;
-        g += .3;
-        r += .1;
-        
-        println("Blue is %d", b);
-        ellipse(spiralX, spiralY, r2, r2);
-        theta += 0.1f;
-  
-        r1 ++;
-        r2 += 1; 
-        
-        //If its completed move on
-        if(b >= 400)
-        {
-          simState = 1;
-        }
+        //This spiral also changes switch state to 1
+        sun.spiral();
       }
      break;
-     }//end case(0)
+    }//end case(0)
      
      case(1):
      {
@@ -101,16 +77,15 @@ void draw()
      
      case(2):
      {
+       
+       noStroke();
+       fill(0, 10);
+       rect(0, 0,width, height);
           
-         
-          noStroke();
-          fill(0, 10);
-          rect(0, 0,width, height);
-          
-          fill(255);
-          ellipse( random(0, width), random(0, height), 10, 10);
+       fill(255);
+       ellipse( random(0, width), random(0, height), 10, 10);
             
-           break;  
+       break;  
      }//end case(2)
 
    
