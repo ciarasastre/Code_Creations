@@ -1,4 +1,4 @@
-class PanelData
+/*class PanelData
 {
   //Declare datatypes here
   
@@ -15,4 +15,4 @@ class PanelData
     
   }
   
-}//end PanelData class
+}//end PanelData class*/

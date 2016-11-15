@@ -107,7 +107,7 @@ class SunData
         g += .6;
         r += .9;
         
-        println("Blue is %d", b);
+        //println("Blue is %d", b);
         ellipse(spiralX, spiralY, r2, r2);
         theta += 0.1f;
   

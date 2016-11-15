@@ -2,7 +2,7 @@ PFont intro;
 
 //CLASSES
 SunData sun;
-PanelData panel;
+//PanelData panel;
 
 void setup()
 {
@@ -12,7 +12,7 @@ void setup()
   cursor(HAND);
   
   sun = new SunData();
-  panel = new PanelData();
+  //panel = new PanelData();
   
   startTime = millis();
   simState = 0;
@@ -26,7 +26,7 @@ void setup()
 int startTime;
 int simState; //This is the state of the simulation
 
-int frame = 100;
+float time = 0;
 
 //This section is incharge of starting up each sequence
 boolean stars = false;
@@ -56,7 +56,7 @@ void draw()
        fill(0, 0, 255);
        textSize(100);
        textFont(intro);
-       text("[ Welcome back Commander ]", 150, 250);
+       text("[ Welcome back ]", 150, 250);
        simState = 2;
        break;
      }//end case(1)
@@ -71,9 +71,29 @@ void draw()
           
        fill(255);
        ellipse( random(0, width), random(0, height), 10, 10);
+       
+       time += .1;
+       println("Time is %d", time);
+       
+       if(time == 20)
+       {
+         simState = 3;
+         break;
+       }
             
-       break;  
+         
      }//end case(2)
+     
+      case(3):
+     {
+       background(0);
+       fill(0, 0, 255);
+       textSize(100);
+       textFont(intro);
+       text("[ Welcome back ]", 150, 250);
+       simState = 2;
+       break;
+     }//end case(1)
 
    
   }//end switch
