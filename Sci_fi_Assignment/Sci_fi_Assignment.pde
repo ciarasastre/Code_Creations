@@ -1,7 +1,7 @@
 PFont intro;
 
 //CLASSES
-SunData sun;
+FrontData front;
 //PanelData panel;
 
 void setup()
@@ -11,7 +11,7 @@ void setup()
   //intro = loadFont("Parchment-Regular-60.vlw");
   cursor(HAND);
   
-  sun = new SunData();
+  front = new FrontData();
   //panel = new PanelData();
   
   startTime = millis();
@@ -41,12 +41,12 @@ void draw()
       if(down == false)
       {
         background(0);
-        sun.display();
+        front.display();
       }
       else
       {
         //This spiral also changes switch state to 1
-        sun.spiral();
+        front.spiral();
       }
      break;
     }//end case(0)
@@ -65,35 +65,20 @@ void draw()
      case(2):
      {
        
-       noStroke();
-       fill(0, 10);
-       rect(0, 0,width, height);
-          
-       fill(255);
-       ellipse( random(0, width), random(0, height), 10, 10);
-       
-       time += .1;
-       println("Time is %d", time);
-       
-       if(time == 20)
-       {
-         simState = 3;
-         break;
-       }
-            
+       fade();
+       break;    
          
      }//end case(2)
      
-      case(3):
+     case(3):
      {
        background(0);
        fill(0, 0, 255);
        textSize(100);
        textFont(intro);
        text("[ Welcome back ]", 150, 250);
-       simState = 2;
        break;
-     }//end case(1)
+     }//end case(3)
 
    
   }//end switch
@@ -105,6 +90,22 @@ void mousePressed()
   down = true;
 }
 
+void fade()
+{
+  noStroke();
+  fill(0, 10);
+  rect(0, 0,width, height);
+  
+  time += 1;
+  
+  if(time > 1000)
+  {
+    simState = 3;
+  }
+          
+  //fill(255);
+  //ellipse( random(0, width), random(0, height), 10, 10);
+}
 /*void planet()
 {
   
