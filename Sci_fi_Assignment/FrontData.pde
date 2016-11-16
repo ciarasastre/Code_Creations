@@ -53,12 +53,76 @@ class FrontData
   
   void display()
   {
+    totalDistance = startDistance;
+    background(0);
+    stroke(255);
+    noFill();
+    strokeWeight(5);
+    
+    arc1();
+    arc2();
+    arc3();
+    arc4();
+    arc5();
+    
+    arc4();
+    arc3();
+    arc2();
+    arc1();
+  }
+  
+  void arc1()
+  {
+    arc(arcX, arcY, startDistance, startDistance, arc1START, arc1STOP); //x, y, wid, hei, start, stop //1
+    totalDistance += startDistance + increaseSize;
+    
+    arc1START += speed;
+    arc1STOP += 1;
     
   }
   
+  void arc2()
+  {
+    arc(arcX, arcY, totalDistance, totalDistance, arc2START, arc2STOP);//2
+    totalDistance += startDistance;
+    
+    arc2START += speed;
+    arc2STOP += speed;
+  
+  }
+  
+  void arc3()
+  {
+    arc(arcX, arcY, totalDistance, totalDistance, arc3START, arc3STOP);//3
+    totalDistance += startDistance;
+    
+    arc3START += speed;
+    arc3STOP += speed;
+  }
+  
+  void arc4()
+  {
+    arc(arcX, arcY, totalDistance, totalDistance, arc4START, arc4STOP); //4
+    totalDistance += startDistance;
+    
+    arc4START += speed;
+    arc4STOP += speed;
+  }
+  
+  void arc5()
+  {
+     arc(arcX, arcY, totalDistance, totalDistance, arc5START, arc5STOP ); //5
+    totalDistance += startDistance;
+    
+    arc5START += speed;
+    arc5STOP += speed;
+    
+  }
+
   void spiral()
   {
-    
+    increaseSize += .5; //This increases all
+    startDistance += 1; //This increases center on
   }
   
   
