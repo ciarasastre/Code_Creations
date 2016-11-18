@@ -2,7 +2,7 @@ PFont intro;
 
 //CLASSES
 FrontData front;
-//PanelData panel;
+PanelData panel;
 
 void setup()
 {
@@ -12,7 +12,7 @@ void setup()
   cursor(HAND);
   
   front = new FrontData();
-  //panel = new PanelData();
+  panel = new PanelData();
   
   startTime = millis();
   simState = 0;
@@ -47,7 +47,7 @@ void draw()
        fill(0, 0, 255);
        textSize(100);
        textFont(intro);
-       text("[ Welcome back ]", 250, 250);
+       text("[ Welcome back ]", 270, 280);
        simState = 2;
        break;
      }//end case(1)
@@ -63,12 +63,7 @@ void draw()
      
      case(3):
      {
-       background(0);
-       fill(0, 0, 255);
-       textSize(100);
-       textFont(intro);
-       text("[ Welcome back ]", 150, 250);
-       break;
+       panel.display();
      }//end case(3)
 
    
@@ -88,15 +83,15 @@ void fade()
   rect(0, 0,width, height);
   
   time += 1;
+  println("%f", time);
   
-  if(time > 1000)
+  if(time > 100)
   {
     simState = 3;
   }
-          
-  //fill(255);
-  //ellipse( random(0, width), random(0, height), 10, 10);
+
 }
+
 /*void planet()
 {
   
