@@ -38,17 +38,8 @@ void draw()
   {
     case(0):
     {
-      if(down == false)
-      {
-        background(0);
         front.display();
-      }
-      else
-      {
-        //This spiral also changes switch state to 1
-        front.spiral();
-      }
-     break;
+        break;
     }//end case(0)
      
      case(1):

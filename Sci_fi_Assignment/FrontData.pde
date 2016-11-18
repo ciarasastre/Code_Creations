@@ -14,7 +14,7 @@ class FrontData
   float arc3START;
   float arc3STOP;
 
-  float arc4START = PI;
+  float arc4START;
   float arc4STOP;
 
   float arc5START;
@@ -53,8 +53,8 @@ class FrontData
   
   void display()
   {
-    totalDistance = startDistance;
     background(0);
+    totalDistance = startDistance;
     stroke(255);
     noFill();
     strokeWeight(5);
@@ -69,6 +69,12 @@ class FrontData
     arc3();
     arc2();
     arc1();
+    
+    if(down == true)
+    {
+      spin();
+    }
+    
   }
   
   void arc1()
@@ -119,11 +125,22 @@ class FrontData
     
   }
 
-  void spiral()
+  void spin()
   {
+    //totalDistance = startDistance;
+    stroke(255);
+    noFill();
+    strokeWeight(5);
+    
     increaseSize += .5; //This increases all
     startDistance += 1; //This increases center on
+    
+    println(increaseSize);
+    
+    if(increaseSize == 100)
+    {
+      simState = 1;
+    }
   }
-  
-  
+
 }//end FrontData
