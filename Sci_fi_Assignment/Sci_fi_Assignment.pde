@@ -47,7 +47,7 @@ void draw()
        fill(0, 0, 255);
        textSize(100);
        textFont(intro);
-       text("[ Welcome back ]", 150, 250);
+       text("[ Welcome back ]", 250, 250);
        simState = 2;
        break;
      }//end case(1)

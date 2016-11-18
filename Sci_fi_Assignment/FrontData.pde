@@ -44,10 +44,10 @@ class FrontData
     arc5START = PI+QUARTER_PI;
     arc5STOP = TWO_PI+HALF_PI;
     
-    arcX = 250;
-    arcY = 250;
+    arcX = width/2;
+    arcY = height/2;
     increaseSize = 0;
-    speed = .01;
+    speed = .05;
   }
   
   
@@ -69,6 +69,17 @@ class FrontData
     arc3();
     arc2();
     arc1();
+    
+    arc1();
+    arc4();
+    arc5();
+    arc2();
+    arc3();
+    
+    arc2();
+    arc1();
+    arc4();
+    arc3();
     
     if(down == true)
     {
@@ -137,7 +148,7 @@ class FrontData
     
     println(increaseSize);
     
-    if(increaseSize == 100)
+    if(increaseSize == 200)
     {
       simState = 1;
     }
