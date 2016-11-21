@@ -64,7 +64,13 @@ void draw()
      case(3):
      {
        panel.display();
+       panel.smallOuterLine();
+       panel.largeOuterLine(); 
+       panel.details();
+       
+
      }//end case(3)
+     
 
    
   }//end switch
@@ -76,6 +82,7 @@ void mousePressed()
   down = true;
 }
 
+//This section creates a fade out effect
 void fade()
 {
   noStroke();
@@ -92,15 +99,16 @@ void fade()
 
 }
 
-/*void planet()
+/*This creates the planet
+void stars()
 {
+  noStroke();
+  fill(0, 10);
+  rect(0, 0,width, height);
   
-  //Now to create the Planet
-  pushMatrix();
-  translate(500, height*0.35, -500); // X, Y,Z Z controls how far away it is
-  noFill();
-  stroke(0, 255, 0);
-  sphere(180); //Controls size of sphere
-  popMatrix(); 
+  //draw stars
+  noStroke();
+  fill(255, 20);
+  ellipse(random(width, height), random(width, height), 20,20);
   
 }*/

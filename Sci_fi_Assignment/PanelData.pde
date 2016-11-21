@@ -15,8 +15,16 @@ class PanelData
   
   void display()
   {
-    smallOuterLine();
+    background(0);  
+    //smallOuterLine();
+    //details();
+    //largeOuterLine();
+  }
   
+  void largeOuterLine()
+  {
+    fill(255);
+    stroke(255);
     /*Bigger line*/
     //LEFT SIDE
     line(width/2-200,60, width/2-250, 60); //left top side
@@ -50,10 +58,12 @@ class PanelData
     
     triangle(820, 250, 780, 280, 860, 280);
     rect(780, 290, 80, 80);
+    
   }
   
   void smallOuterLine()
   {
+    fill(255);
     stroke(255);
     strokeWeight(10);
     
@@ -75,6 +85,24 @@ class PanelData
     line(width/2-150, 570, 0, height); //L
     line(width/2+150, 570, width, height); //R
     
+    
+  }
+  
+  void details()
+  {
+    //First create the mini circles on the left
+    fill(255,0,0);
+    noStroke();
+    ellipse(50, 290, 30,30);
+    
+    ellipse(50, 340, 30,30);
+    
+    ellipse(50, 385, 30,30);
+    
+    //Then the inside circle on the right
+    ellipse(width-80, 330, 80,80);
+    
+    //now enter in grids from the left and right
   }
   
 }//end PanelData class
