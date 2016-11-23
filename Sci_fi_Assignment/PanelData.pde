@@ -6,6 +6,10 @@ class PanelData
   float rectX;
   float rectY;
   
+   PImage img;
+  PImage galaxy;
+  PShape globe;
+  
   PanelData()
   {
     //Contructors here
@@ -129,5 +133,46 @@ void arrows()
   rect(500, 450, 60, 80); // Right
   
 }
+
+void planet()
+{
+  background(0);
+    noStroke();
+    fill(255);
+    
+    // Load an image
+    img = loadImage("earth.jpg");
+    galaxy = loadImage("galaxy.jpg");
+    
+    globe = createShape(SPHERE, 150);
+    
+    // Automatically texture the shape with the image
+    globe.setTexture(img);
+    
+     background(0);
   
+    hint(DISABLE_DEPTH_MASK);
+    image(galaxy, 0, 0, width, height);
+    hint(ENABLE_DEPTH_MASK);
+    
+    pushMatrix();
+    translate(width/2, height/2, -300);  
+    
+    //pushMatrix();
+    rotateY(PI * frameCount / 500);
+    shape(globe);
+    //popMatrix();
+  
+    
+    popMatrix();
+    /*Now to create the Planet
+    pushMatrix();
+    translate(p, height*0.35, -500); // X, Y,Z Z controls how far away it is height*0.35
+    noFill();
+    stroke(0, 255, 0);
+    sphere(180); //Controls size of sphere
+    popMatrix();
+    p += .1;*/
+  
+  }
 }//end PanelData class
