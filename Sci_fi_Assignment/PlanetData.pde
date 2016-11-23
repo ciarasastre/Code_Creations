@@ -25,7 +25,6 @@ class PlanetData
     
     // Automatically texture the shape with the image
     globe.setTexture(planet1);
-    
   
     hint(DISABLE_DEPTH_MASK); //This makes sure the planet is drawn on top
     image(galaxy, 0, 0, width, height);

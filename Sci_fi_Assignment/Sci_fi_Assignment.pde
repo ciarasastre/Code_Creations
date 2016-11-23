@@ -3,7 +3,6 @@ PFont intro;
 //CLASSES
 FrontData front;
 PlanetData planet;
-PanelData panel;
 
 void setup()
 {
@@ -14,7 +13,6 @@ void setup()
   
   front = new FrontData();
   planet = new PlanetData();
-  panel = new PanelData();
   
   
   startTime = millis();
@@ -77,7 +75,8 @@ void draw()
      case(3):
      {
        planet.display();
-       planet.display();
+       //planet.display();
+       
        smallOuterLine();
        topPost();
        largeOuterLine();
