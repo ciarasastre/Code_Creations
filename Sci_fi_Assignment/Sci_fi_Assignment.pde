@@ -65,9 +65,10 @@ void draw()
      {
        panel.display();
        panel.smallOuterLine();
+       panel.topPost();
        panel.largeOuterLine(); 
        panel.details();
-       
+       panel.arrows();
 
      }//end case(3)
      

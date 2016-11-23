@@ -5,12 +5,6 @@ class PanelData
   float rectSize;
   float rectX;
   float rectY;
-  float borderW = 250;
-  float borderH = 100;
-  float gridY = 450;
-  float gridX = 10;
-  float i;
-  float j;
   
   PanelData()
   {
@@ -22,9 +16,6 @@ class PanelData
   void display()
   {
     background(0);  
-    //smallOuterLine();
-    //details();
-    //largeOuterLine();
   }
   
   void largeOuterLine()
@@ -127,5 +118,16 @@ class PanelData
     
     //now enter in grids from the left and right
   }
+  
+void arrows()
+{
+  fill(255);
+  rect(410, 500, 80, 60); //Down
+  rect(410, 420, 80, 60); // Up
+  
+  rect(340, 450, 60, 80); // Left
+  rect(500, 450, 60, 80); // Right
+  
+}
   
 }//end PanelData class
