@@ -33,11 +33,11 @@ float time = 0;
 boolean stars = false;
 boolean down = false;
 
-float rectSize = 30;
+float rectSize = 60;
 float rectX;
 float rectY;
 
-float size = 20;
+float lCircSize = 50;
 float g = 100;
 float h = 100;
 
@@ -131,18 +131,6 @@ void largeOuterLine()
   line(30, 200, 50,230); //connecter
   line(50, 230, 50, 250); //connecting to rects
   
-  //TIME FOR RECTS
-  rect(40, 250, 20,10); //small top rect connecter
-  rect(30, 270, rectSize+10, rectSize); // main ect
-  
-  rect(40, 300, 20,10); //small top rect connecter
-  rect(30, 320, rectSize+10, rectSize); // main ect
-  
-  rect(40, 350, 20,10); //small top rect connecter
-  rect(30, 370, rectSize+10, rectSize); // main ect
-  
-  rect(40, 410, 20,10); //final small rect connecter
-  
   //RIGHT SIDE
   line(width/2+200,60, width/2+250, 60); //left top side
   line(width/2+250, 60, width/2+280, 80); //Dwn a bit
@@ -155,6 +143,7 @@ void largeOuterLine()
   triangle(820, 250, 780, 280, 860, 280);
   rect(780, 290, 80, 80);
 
+  //Circles to fill cracks
   ellipse(width/2-200,60, circSize, circSize);
   ellipse(width/2-250, 60, circSize, circSize);
   ellipse( width/2-280, 80, circSize, circSize); //ALL TOP LEFT SIDE
@@ -166,7 +155,7 @@ void largeOuterLine()
   ellipse(30, 80, circSize, circSize);
   ellipse(30, 200, circSize, circSize);
   ellipse(50, 230, circSize, circSize);
-  ellipse(50, 250, circSize, circSize); //ALL BOT LEFT SIDE
+  ellipse(50, 250, circSize, circSize+10); //ALL BOT LEFT SIDE
   
   ellipse(870, 80, circSize, circSize);
   ellipse(870, 200, circSize, circSize);
@@ -186,6 +175,7 @@ void smallOuterLine()
   line(width/2-150,10, width/2-200, 40); //left side
   line(width/2+150,10, width/2+200, 40); //right side
   
+  //Circles to fill cracks
   ellipse(width/2-150,10, circSize, circSize);
   ellipse(width/2-200, 40, circSize, circSize);
   ellipse(width/2+150,10, circSize, circSize);
@@ -225,6 +215,7 @@ void topPost()
   
   line(width/2-150, 170, width/2 +150, 170); // Bot Line
   
+  //Circles to fill cracks
   ellipse(width/2-150, 30, circSize-small, circSize-small);
   ellipse(width/2+150, 30, circSize-small, circSize-small);
   ellipse(width/2-200, 100, circSize-small, circSize-small);
@@ -232,7 +223,6 @@ void topPost()
   
   ellipse(width/2+150, 170, circSize-small, circSize-small);
   ellipse(width/2-150, 170, circSize-small, circSize-small);
-  
   
 }
 
@@ -253,16 +243,29 @@ void details()
   
   //Create line that rotates around
   
-  //Create small circles on left
+  //TIME FOR RECTS LEFT RECTS
+  fill(255);
   noStroke();
+  rect(35, 260, 30, 20); //small top rect connecter
+  rect(15, 275, rectSize+10, rectSize); // main ect
+  
+  rect(35, 330, 30, 20); //small top rect connecter
+  rect(15, 345, rectSize+10, rectSize); // main ect
+  
+  rect(35, 400, 30, 20); //small top rect connecter
+  rect(15, 415, rectSize+10, rectSize); // main ect
+  
+  rect(35, 470, 30, 20); //final small rect connecter
+  
+  //Create small circles on left
   fill(0, 255, 0); //green
-  ellipse(50, 290, 30,30);
+  ellipse(50, 305, lCircSize, lCircSize);
   
-  fill(0, 0, 255);
-  ellipse(50, 340, 30,30);
+  fill(0, 0, 255); //Red
+  ellipse(50, 375, lCircSize, lCircSize);
   
-  fill(255, 0, 0);
-  ellipse(50, 385, 30,30);
+  fill(255, 0, 0); //Blue
+  ellipse(50, 445, lCircSize, lCircSize);
   
    
 }
