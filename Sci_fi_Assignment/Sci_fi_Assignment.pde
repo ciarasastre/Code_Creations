@@ -6,7 +6,7 @@ PanelData panel;
 
 void setup()
 {
-  size(900,600, P3D);
+  size(900,600);
   intro = loadFont("ARDESTINE-48.vlw"); 
   //intro = loadFont("Parchment-Regular-60.vlw");
   cursor(HAND);

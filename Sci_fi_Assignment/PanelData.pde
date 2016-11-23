@@ -5,6 +5,12 @@ class PanelData
   float rectSize;
   float rectX;
   float rectY;
+  float borderW = 250;
+  float borderH = 100;
+  float gridY = 450;
+  float gridX = 10;
+  float i;
+  float j;
   
   PanelData()
   {
@@ -84,6 +90,23 @@ class PanelData
     //Going from left + right side to beg
     line(width/2-150, 570, 0, height); //L
     line(width/2+150, 570, width, height); //R
+    
+    
+  }
+  
+  void topPost()
+  {
+    fill(255,0,0);
+    stroke(255, 0, 0);
+    line(width/2-150, 30, width/2 +150, 30); //Top Line
+    
+    line(width/2-150, 30, width/2-200, 100); //L
+    line(width/2+150, 30, width/2+200, 100); //R
+    
+    line(width/2-200, 100, width/2-150, 170); //L
+    line(width/2+200, 100, width/2+150, 170); //R
+    
+    line(width/2-150, 170, width/2 +150, 170); // Bot Line
     
     
   }
