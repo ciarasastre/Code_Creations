@@ -148,7 +148,7 @@ class FrontData
     
     println(increaseSize);
     
-    if(increaseSize == 50) //200
+    if(increaseSize == 200) //200
     {
       simState = 1;
     }

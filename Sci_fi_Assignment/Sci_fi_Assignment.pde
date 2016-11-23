@@ -52,7 +52,6 @@ void draw()
     case(0):
     {
         front.display();
-        simState = 3;
         break;
     }//end case(0)
      
@@ -109,7 +108,7 @@ void fade()
   time += 1;
   println("%f", time);
   
-  if(time > 100)
+  if(time > 70)
   {
     simState = 3;
   }
@@ -139,9 +138,6 @@ void largeOuterLine()
   line(870, 80, 870, 200); //Down
   line(870, 200, 820, 230); //connecter
   line(820, 230, 820, 250); //connecting to rects
-  
-  triangle(820, 250, 780, 280, 860, 280);
-  rect(780, 290, 80, 80);
 
   //Circles to fill cracks
   ellipse(width/2-200,60, circSize, circSize);
@@ -230,18 +226,23 @@ void details()
 {
   //fill(random(0,200), random(0,200), random(0,200) );
   fill(0);
-  strokeWeight(5);
+  strokeWeight(2);
   stroke(0, 255, 0);
   
+  //RIGHT SECTION
+  triangle(820, 260, 740, 320, 895, 320);
+  rect(740, 320, 150, 130);
+  
   // the inside circle on the right
-  ellipse(width-80, 330, 80,80);
+  ellipse(width-85, 385, 110, 110);
   
   //create circles inside this circle
-  ellipse(width-80, 330, 60,60);
-  ellipse(width-80, 330, 40,40);
-  ellipse(width-80, 330, 20,20);
+  ellipse(width-85, 385, 80, 80);
+  ellipse(width-85, 385, 60, 60);
+  ellipse(width-85, 385, 40, 40);
+  ellipse(width-85, 385, 20, 20);
   
-  //Create line that rotates around
+  
   
   //TIME FOR RECTS LEFT RECTS
   fill(255);
@@ -273,11 +274,34 @@ void details()
 
 void arrows()
 {
+  //First boxes
+  stroke(49,35,57); // Grey
   fill(255);
-  rect(410, 500, 80, 60); //Down
   rect(410, 420, 80, 60); // Up
+  rect(410, 500, 80, 60); //Down
   
   rect(340, 450, 60, 80); // Left
   rect(500, 450, 60, 80); // Right
+  
+  //Then draw the arrows
+  fill(0);
+  stroke(0);
+  strokeWeight(5);
+  
+  triangle(450, 425, 470, 445, 430, 445);
+  line(450, 425, 450, 470); // UP KEY
+  
+  triangle(450, 555, 470, 535, 430, 535);
+  line(450, 555, 450, 510); // DOWN KEY
+  
+  triangle(345, 490, 365, 470, 365, 510);
+  line(345, 490, 390, 490); //LEFT KEY
+  
+  triangle(555, 490, 535, 470, 535, 510);
+  line(555, 490, 505, 490); //RIGHT KEY
+  
+  
+  
+  
   
 }
