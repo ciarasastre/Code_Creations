@@ -42,6 +42,7 @@ float g = 100;
 float h = 100;
 
 float p = 100;
+float circSize = 10;
 
 void draw()
 {
@@ -50,6 +51,7 @@ void draw()
     case(0):
     {
         front.display();
+        simState = 3;
         break;
     }//end case(0)
      
@@ -118,6 +120,7 @@ void largeOuterLine()
   fill(255);
   stroke(255);
   /*Bigger line*/
+  
   //LEFT SIDE
   line(width/2-200,60, width/2-250, 60); //left top side
   line(width/2-250, 60, width/2-280, 80); //Dwn a bit
@@ -150,6 +153,24 @@ void largeOuterLine()
   
   triangle(820, 250, 780, 280, 860, 280);
   rect(780, 290, 80, 80);
+
+  ellipse(width/2-200,60, circSize, circSize);
+  ellipse(width/2-250, 60, circSize, circSize);
+  ellipse( width/2-280, 80, circSize, circSize); //ALL TOP LEFT SIDE
+  
+  ellipse(width/2+200,60, circSize, circSize);
+  ellipse(width/2+250, 60, circSize, circSize);
+  ellipse(width/2+280, 80, circSize, circSize); //ALL TOP RIGHT SIDE
+  
+  ellipse(30, 80, circSize, circSize);
+  ellipse(30, 200, circSize, circSize);
+  ellipse(50, 230, circSize, circSize);
+  ellipse(50, 250, circSize, circSize); //ALL BOT LEFT SIDE
+  
+  ellipse(870, 80, circSize, circSize);
+  ellipse(870, 200, circSize, circSize);
+  ellipse(820, 230, circSize, circSize);
+  ellipse(820, 250, circSize, circSize); //ALL BOT RIGHT SIDE
   
 }
 
@@ -163,6 +184,8 @@ void smallOuterLine()
   line(width/2-150,10, width/2+150,10); //top main line
   line(width/2-150,10, width/2-200, 40); //left side
   line(width/2+150,10, width/2+200, 40); //right side
+  
+  ellipse(width/2-150,10, circSize, circSize);
   
   //Going from left + right side to beg
   line(width/2-200, 40, 0, 0); //L
