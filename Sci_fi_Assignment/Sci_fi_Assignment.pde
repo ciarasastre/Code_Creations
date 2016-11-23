@@ -43,6 +43,7 @@ float h = 100;
 
 float p = 100;
 float circSize = 10;
+float small = 8;
 
 void draw()
 {
@@ -186,6 +187,9 @@ void smallOuterLine()
   line(width/2+150,10, width/2+200, 40); //right side
   
   ellipse(width/2-150,10, circSize, circSize);
+  ellipse(width/2-200, 40, circSize, circSize);
+  ellipse(width/2+150,10, circSize, circSize);
+  ellipse(width/2+200, 40, circSize, circSize);
   
   //Going from left + right side to beg
   line(width/2-200, 40, 0, 0); //L
@@ -195,6 +199,12 @@ void smallOuterLine()
   line(width/2-130,590, width/2+130,590); //bot main line
   line(width/2-130,590, width/2-150, 570); // left side
   line(width/2+130,590, width/2+150, 570); //right side
+  
+  //Circles to fill cracks
+  ellipse(width/2-130,590, circSize, circSize);
+  ellipse(width/2+130,590, circSize, circSize);
+  ellipse(width/2-150, 570, circSize, circSize);
+  ellipse(width/2+150, 570, circSize, circSize);
   
   //Going from left + right side to beg
   line(width/2-150, 570, 0, height); //L
@@ -214,6 +224,14 @@ void topPost()
   line(width/2+200, 100, width/2+150, 170); //R
   
   line(width/2-150, 170, width/2 +150, 170); // Bot Line
+  
+  ellipse(width/2-150, 30, circSize-small, circSize-small);
+  ellipse(width/2+150, 30, circSize-small, circSize-small);
+  ellipse(width/2-200, 100, circSize-small, circSize-small);
+  ellipse(width/2+200, 100, circSize-small, circSize-small);
+  
+  ellipse(width/2+150, 170, circSize-small, circSize-small);
+  ellipse(width/2-150, 170, circSize-small, circSize-small);
   
   
 }
