@@ -159,7 +159,6 @@ class PlanetData
       {
         p = 450;
       }
-        println("%f", p);
     }
      
   }//end void display

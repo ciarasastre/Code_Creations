@@ -36,6 +36,8 @@ int arrowChangeLeft = 35;
 int arrowChangeRight = 35;
 
 float time = 0;
+float moveX = 815;
+float moveY = 330;
 
 //This section is incharge of starting up each sequence
 boolean stars = false;
@@ -94,6 +96,7 @@ void draw()
        largeOuterLine();
        details();
        arrows();
+       radarDetails();
 
      }//end case(3)
      
@@ -239,7 +242,7 @@ void details()
   //fill(random(0,200), random(0,200), random(0,200) );
   fill(0);
   strokeWeight(2);
-  stroke(0, 255, 0);
+  stroke(255);
   
   //RIGHT SECTION
   triangle(820, 260, 740, 320, 895, 320);
@@ -253,7 +256,6 @@ void details()
   ellipse(width-85, 385, 60, 60);
   ellipse(width-85, 385, 40, 40);
   ellipse(width-85, 385, 20, 20);
-  
   
   
   //TIME FOR RECTS LEFT RECTS
@@ -274,11 +276,30 @@ void details()
   fill(0, 255, 0); //green
   ellipse(50, 305, lCircSize, lCircSize);
   
+  //FUEL LEVEL
+  textFont(info);
+  fill(0);
+  text("100%", 30, 310);
+  fill(255);
+  text("Fuel Level", 100, 310);
+  
   fill(0, 0, 255); //Red
   ellipse(50, 375, lCircSize, lCircSize);
   
+  //OXYGEN LEVEL
+  fill(0);
+  text("100%", 30, 380);
+  fill(255);
+  text("Oxygen Level", 100, 380);
+  
   fill(255, 0, 0); //Blue
   ellipse(50, 445, lCircSize, lCircSize);
+  
+  //SPEED LEVEL
+  fill(0);
+  text("1", 45, 450);
+  fill(255);
+  text("Speed Level", 100, 450);
   
    
 }
@@ -328,6 +349,7 @@ void arrows()
       arrowChangeUp = 35;
       arrowChangeDown = 35;
       
+      
     }
     
     if(keyCode == RIGHT)
@@ -360,4 +382,24 @@ void arrows()
       
     }
   }
+  
+}
+
+void radarDetails()
+{
+  stroke(255);
+  line(width-85, height-215, moveX, moveY);//Top
+  
+  line(width-85, height-215, moveX+55, moveY+55); //Right
+  line(width-85, height-215, moveX-55, moveY+55); //Left
+  
+  line(width-85, height-215, moveX, moveY+110); //Bottom
+  
+  fill(0, 0, 255);
+  strokeWeight(1);
+  ellipse(width-120, height-215, 10, 10);
+  
+  ellipse(width-40, height-215, 10, 10);
+  ellipse(width-85, height-240, 10, 10);
+  ellipse(width-85, height-180, 10, 10);
 }
