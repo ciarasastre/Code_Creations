@@ -306,13 +306,13 @@ void arrows()
   {
     if(keyCode == LEFT)
     {
-      p += 10;
+      p += 150;
       
     }
     
     if(keyCode == RIGHT)
     {
-      p -= 10;
+      p -= 100;
       
     }
     
