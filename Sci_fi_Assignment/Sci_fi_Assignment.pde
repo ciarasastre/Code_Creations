@@ -1,4 +1,6 @@
 PFont intro;
+PFont infoMain;
+PFont info;
 
 //CLASSES
 FrontData front;
@@ -8,6 +10,8 @@ void setup()
 {
   size(900,600, P3D);
   intro = loadFont("ARDESTINE-48.vlw"); 
+  info = loadFont("ARDESTINE-20.vlw");
+  infoMain = loadFont("ARDESTINE-25.vlw");
   
   cursor(HAND);
   
@@ -26,6 +30,10 @@ void setup()
 //This is for the into scanner
 int startTime;
 int simState; //This is the state of the simulation
+int arrowChangeUp = 35;
+int arrowChangeDown = 35;
+int arrowChangeLeft = 35;
+int arrowChangeRight = 35;
 
 float time = 0;
 
@@ -201,26 +209,28 @@ void smallOuterLine()
 
 void topPost()
 {
-  fill(255,0,0);
-  stroke(255, 0, 0);
-  line(width/2-150, 30, width/2 +150, 30); //Top Line
+  strokeWeight(5);
+  fill(49,35,57); // Grey
   
-  line(width/2-150, 30, width/2-200, 100); //L
-  line(width/2+150, 30, width/2+200, 100); //R
+  rect(width/2-150, 30, 300, 130);
+  triangle(width/2-200, 100, width/2-150, 30, width/2-150, 160); //Left Tri
+  triangle(width/2+200, 100, width/2+150, 30, width/2+150, 160); //Right Tri
   
-  line(width/2-200, 100, width/2-150, 170); //L
-  line(width/2+200, 100, width/2+150, 170); //R
+  /*fill(0, 0, 255);
+  textSize(100);
+  textFont(intro);
+  text("[ Welcome back ]", 270, 280);*/
+
+       
+  //Read in info about planets here
+  fill(255);
+  textFont(infoMain);
+  text("Planet Earth", 385, 60);
   
-  line(width/2-150, 170, width/2 +150, 170); // Bot Line
-  
-  //Circles to fill cracks
-  ellipse(width/2-150, 30, circSize-small, circSize-small);
-  ellipse(width/2+150, 30, circSize-small, circSize-small);
-  ellipse(width/2-200, 100, circSize-small, circSize-small);
-  ellipse(width/2+200, 100, circSize-small, circSize-small);
-  
-  ellipse(width/2+150, 170, circSize-small, circSize-small);
-  ellipse(width/2-150, 170, circSize-small, circSize-small);
+  textFont(info);
+  text("Population : ", 310, 100);
+  text("Description : Filled with", 310, 130);
+  text("60% water or somethin", 310, 150);
   
 }
 
@@ -277,12 +287,18 @@ void details()
 void arrows()
 {
   //First boxes
-  stroke(49,35,57); // Grey
+  strokeWeight(5);
   fill(255);
+  stroke(49,arrowChangeUp,57); // Grey at first
   rect(410, 420, 80, 60); // Up
+  
+  stroke(49,arrowChangeDown,57); // Grey at first
   rect(410, 500, 80, 60); //Down
   
+  stroke(49,arrowChangeLeft,57); // Grey at first
   rect(340, 450, 60, 80); // Left
+  
+  stroke(49,arrowChangeRight,57); // Grey at first
   rect(500, 450, 60, 80); // Right
   
   //Then draw the arrows
@@ -306,25 +322,41 @@ void arrows()
   {
     if(keyCode == LEFT)
     {
-      p += 150;
+      p += 10;
+      arrowChangeLeft = 255;
+      arrowChangeRight = 35;
+      arrowChangeUp = 35;
+      arrowChangeDown = 35;
       
     }
     
     if(keyCode == RIGHT)
     {
-      p -= 100;
+      p -= 10;
+      arrowChangeRight = 255;
+      arrowChangeLeft = 35;
+      arrowChangeUp = 35;
+      arrowChangeDown = 35;
       
     }
     
     if(keyCode == UP)
     {
       z += 10;
+      arrowChangeRight = 35;
+      arrowChangeLeft = 35;
+      arrowChangeUp = 255;
+      arrowChangeDown = 35;
       
     }
     
     if(keyCode == DOWN)
     {
       z -= 10;
+      arrowChangeDown = 255;
+      arrowChangeRight = 35;
+      arrowChangeLeft = 35;
+      arrowChangeUp = 35;
       
     }
   }
