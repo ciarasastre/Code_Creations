@@ -41,7 +41,8 @@ float lCircSize = 50;
 float g = 100;
 float h = 100;
 
-float p = 100;
+float p = 450;
+float z = -500;
 float circSize = 10;
 float small = 8;
 
@@ -52,6 +53,7 @@ void draw()
     case(0):
     {
         front.display();
+        simState =3;
         break;
     }//end case(0)
      
@@ -300,8 +302,30 @@ void arrows()
   triangle(555, 490, 535, 470, 535, 510);
   line(555, 490, 505, 490); //RIGHT KEY
   
-  
-  
-  
-  
+  if(keyPressed)
+  {
+    if(keyCode == LEFT)
+    {
+      p += 10;
+      
+    }
+    
+    if(keyCode == RIGHT)
+    {
+      p -= 10;
+      
+    }
+    
+    if(keyCode == UP)
+    {
+      z += 10;
+      
+    }
+    
+    if(keyCode == DOWN)
+    {
+      z -= 10;
+      
+    }
+  }
 }
