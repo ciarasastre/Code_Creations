@@ -34,6 +34,10 @@ int arrowChangeUp = 35;
 int arrowChangeDown = 35;
 int arrowChangeLeft = 35;
 int arrowChangeRight = 35;
+int fuel = 100;
+int refuel = 0;
+int oxy = 100;
+int speed = 1;
 
 float time = 0;
 float moveX = 815;
@@ -56,6 +60,7 @@ float z = -500;
 float circSize = 10;
 float small = 8;
 
+
 void draw()
 {
   switch(simState)
@@ -63,7 +68,7 @@ void draw()
     case(0):
     {
         front.display();
-        simState =3;
+        simState =1;
         break;
     }//end case(0)
      
@@ -109,6 +114,11 @@ void draw()
 void mousePressed()
 {
   down = true;
+  
+  if(mouseX > 50)
+  {
+    refuel = 1;
+  }
 }
 
 //This section creates a fade out effect
@@ -279,7 +289,15 @@ void details()
   //FUEL LEVEL
   textFont(info);
   fill(0);
-  text("100%", 30, 310);
+  text(fuel+"%", 30, 310);
+  fuel -= 1;
+  
+  if(fuel < 0)
+  {
+    refuel = 1; //refuel is true
+    fuel = 100;
+  }
+  
   fill(255);
   text("Fuel Level", 100, 310);
   
@@ -288,7 +306,14 @@ void details()
   
   //OXYGEN LEVEL
   fill(0);
-  text("100%", 30, 380);
+  text(oxy+"%", 30, 380);
+  oxy -= 1;
+  
+  if(oxy < 0)
+  {
+    oxy += 1;
+  }
+  
   fill(255);
   text("Oxygen Level", 100, 380);
   
@@ -297,7 +322,8 @@ void details()
   
   //SPEED LEVEL
   fill(0);
-  text("1", 45, 450);
+  text(speed, 45, 450);
+  
   fill(255);
   text("Speed Level", 100, 450);
   
