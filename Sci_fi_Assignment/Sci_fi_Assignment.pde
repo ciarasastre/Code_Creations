@@ -105,16 +105,22 @@ void draw()
        
        radarDetails();
        planetCoordinates();
-       
+       break;
        //simState = 4;
      }//end case 3
      
-     /*case(4):
+     case(4):
      {
-       buttonControls();
-       
-     }*/
+       //buttonControls();
+       lowOxy();
+       break;
+     }
      
+     case(5):
+     {
+       //This function is for fuel DONT MOVE
+       break;
+     }
 
    
   }//end switch
@@ -131,12 +137,14 @@ void mousePressed()
     if(mouseY > 270 && mouseY < 335)
     {
       fuel = 100;
+      simState = 3;
     }
     
     //IF IT IS OVER THE OXYGEN BUTTON
     if(mouseY > 345 && mouseY < 405)
     {
       oxy = 100;
+      simState = 3;
     }
     
     //IF IT IS OVER THE SPEED BUTTON
@@ -439,6 +447,12 @@ void details()
     fuel += 1;
   }
   
+  if(fuel == 0)
+  {
+    //Cant move if no fuel
+    simState = 5 ;
+  }
+  
   fill(255);
   text("Fuel Level", 100, 310);
   
@@ -448,13 +462,19 @@ void details()
   //OXYGEN LEVEL
   fill(0);
   text(oxy+"%", 30, 380);
-  oxy -= 1;
+  oxy -= 10;
   
   if(oxy < 0)
   {
     oxy += 1;
   }
   
+  if(oxy == 0)
+  {
+    simState = 4;
+    
+  }
+
   fill(255);
   text("Oxygen Level", 100, 380);
   
@@ -617,6 +637,14 @@ void planetCoordinates()
 }
 
 ArrayList<PlanetPos> planets = new ArrayList<PlanetPos>();
+
+void lowOxy()
+{
+  //Fade to black if low on oxygen
+  noStroke();
+  fill(0, 10);
+  rect(0, 0,width, height);
+}
 
 /*void buttonControls()
 {
