@@ -24,7 +24,7 @@ void setup()
   startTime = millis();
   simState = 0;
   lights();
-  
+
   background(0);
 
 }
@@ -113,7 +113,6 @@ void draw()
        loadCoordinates();
        showCoordinates();
        
-       
        break;
      }//end case 3
      
@@ -165,6 +164,7 @@ void mousePressed()
       }
     }
   }
+    
 }
 
 //This section creates a fade out effect
@@ -290,6 +290,9 @@ void topPost()
     text("Population : ", 310, 100);
     text("Description : Filled with", 310, 130);
     text("60% water or somethin", 310, 150);
+    
+    stroke(255);
+    line(width-85, height-215, moveX, moveY);// EARTH
   }
   
   //WHEN EARHT IS FULL CYCLE
@@ -304,6 +307,9 @@ void topPost()
     text("Population : ", 310, 100);
     text("Description : Filled with", 310, 130);
     text("60% water or somethin", 310, 150);
+    
+    stroke(255);
+    line(width-85, height-215, moveX, moveY);// EARTH
   }
   
   //LUTHREX
@@ -317,6 +323,9 @@ void topPost()
     text("Population : Around 1 Billion ", 310, 100);
     text("Description : Cloud species", 310, 130);
     text("live here ", 310, 150);
+    
+    stroke(255);
+    line(width-85, height-215, moveX-55, moveY+55); //LUTHREX
   }
   
   //NEXUS
@@ -330,6 +339,9 @@ void topPost()
     text("Population : 5 Queens ", 310, 100);
     text("Description : Yaas Queen", 310, 130);
     text("Yaaaaaaaaas ", 310, 150);
+    
+    stroke(255);
+    line(width-85, height-215, moveX, moveY+110); //NEXUS
   }
   
   //Zaran
@@ -343,6 +355,10 @@ void topPost()
     text("Population : 2,098 ", 310, 100);
     text("Description : Full of Fire lovers", 310, 130);
     text("No sustainable land. ", 310, 150);
+    
+    stroke(255);
+    line(width-85, height-215, moveX+55, moveY+55); //ZARAN
+
   }
   
   
@@ -360,6 +376,9 @@ void topPost()
     text("Population : 2,098 ", 310, 100);
     text("Description : Full of Fire lovers", 310, 130);
     text("No sustainable land. ", 310, 150);
+    
+    stroke(255);
+    line(width-85, height-215, moveX+55, moveY+55); //ZARAN
   }
   
   //LUTHREX
@@ -373,6 +392,10 @@ void topPost()
     text("Population : Around 1 Billion ", 310, 100);
     text("Description : Cloud species", 310, 130);
     text("live here ", 310, 150);
+    
+    stroke(255);
+    line(width-85, height-215, moveX-55, moveY+55); //LUTHREX
+
   }
   
   //NEXUS
@@ -386,6 +409,9 @@ void topPost()
     text("Population : 5 Queens ", 310, 100);
     text("Description : Yaas Queen", 310, 130);
     text("Yaaaaaaaaas ", 310, 150);
+    
+    stroke(255);
+    line(width-85, height-215, moveX, moveY+110); //NEXUS
   }
   
   //WHEN EARHT IS FULL CYCLE
@@ -400,6 +426,9 @@ void topPost()
     text("Population : ", 310, 100);
     text("Description : Filled with", 310, 130);
     text("60% water or somethin", 310, 150);
+    
+    stroke(255);
+    line(width-85, height-215, moveX, moveY);// EARTH
   }
   
 }
@@ -609,12 +638,6 @@ void arrows()
 void radarDetails()
 {
   stroke(255);
-  //line(width-85, height-215, moveX, moveY);//Top
-  
-  //line(width-85, height-215, moveX+55, moveY+55); //Right
-  //line(width-85, height-215, moveX-55, moveY+55); //Left
-  
-  //line(width-85, height-215, moveX, moveY+110); //Bottom
   
   fill(0, 0, 255);
   strokeWeight(1);
