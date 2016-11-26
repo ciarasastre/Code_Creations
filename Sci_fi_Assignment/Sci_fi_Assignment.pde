@@ -1,3 +1,7 @@
+import ddf.minim.*;
+Minim minim; //audio context
+AudioPlayer beginning;
+
 PFont intro;
 PFont infoMain;
 PFont info;
@@ -15,13 +19,18 @@ void setup()
   info = loadFont("ARDESTINE-20.vlw");
   infoMain = loadFont("ARDESTINE-25.vlw");
   
+  minim = new Minim(this);
+  beginning = minim.loadFile("begin.wav", 300);
+  
   cursor(HAND);
   
   front = new FrontData();
   planet = new PlanetData();
   
+  beginning.rewind();
+  beginning.play();
   
-  startTime = millis();
+  //startTime = millis();
   simState = 0;
   lights();
 
@@ -30,12 +39,14 @@ void setup()
 }
 
 //This is for the into scanner
-int startTime;
+//int startTime;
 int simState; //This is the state of the simulation
+
 int arrowChangeUp = 35;
 int arrowChangeDown = 35;
 int arrowChangeLeft = 35;
 int arrowChangeRight = 35;
+
 int fuel = 100;
 int refuel = 0;
 int oxy = 100;
@@ -44,22 +55,20 @@ int speed = 1;
 float time = 0;
 float moveX = 815;
 float moveY = 330;
-
-
 int xList = 600;
 int yList = 490;
 
 //This section is incharge of starting up each sequence
-boolean stars = false;
 boolean down = false;
+boolean playMusic1 = false;
 
 float rectSize = 60;
 float rectX;
 float rectY;
 
 float lCircSize = 50;
-float g = 100;
-float h = 100;
+//float g = 100;
+//float h = 100;
 
 float p = 450;
 float z = -500;
@@ -74,7 +83,7 @@ void draw()
     case(0):
     {
         front.display();
-        simState =3;
+        //simState = 1;
         break;
     }//end case(0)
      
@@ -91,7 +100,6 @@ void draw()
      
      case(2):
      {
-       
        fade();
        break;    
          
@@ -177,7 +185,7 @@ void fade()
   time += 1;
   println("%f", time);
   
-  if(time > 70)
+  if(time > 65)
   {
     simState = 3;
   }
@@ -287,7 +295,7 @@ void topPost()
     text("Planet Earth", 385, 60);
     
     textFont(info);
-    text("Population : ", 310, 100);
+    text("Population : 108 Billion", 310, 100);
     text("Description : Filled with", 310, 130);
     text("60% water or somethin", 310, 150);
     
@@ -304,7 +312,7 @@ void topPost()
     text("Planet Earth", 385, 60);
     
     textFont(info);
-    text("Population : ", 310, 100);
+    text("Population : 108 Billion", 310, 100);
     text("Description : Filled with", 310, 130);
     text("60% water or somethin", 310, 150);
     
@@ -423,7 +431,7 @@ void topPost()
     text("Planet Earth", 385, 60);
     
     textFont(info);
-    text("Population : ", 310, 100);
+    text("Population : 108 Billion", 310, 100);
     text("Description : Filled with", 310, 130);
     text("60% water or somethin", 310, 150);
     

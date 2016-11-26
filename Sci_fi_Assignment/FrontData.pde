@@ -84,6 +84,7 @@ class FrontData
     if(down == true)
     {
       spin();
+      beginning.pause();
     }
     
   }
