@@ -104,7 +104,6 @@ class PlanetData
       shape(globe); //Controls size
       popMatrix();
       
-      println("%f", p);
       
       if(p == -5150)
       {
@@ -160,6 +159,8 @@ class PlanetData
         p = 450;
       }
     }
+    
+    println("P = %f", p);
      
   }//end void display
   

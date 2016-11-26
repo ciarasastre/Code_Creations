@@ -2,6 +2,8 @@ PFont intro;
 PFont infoMain;
 PFont info;
 
+Table table;
+
 //CLASSES
 FrontData front;
 PlanetData planet;
@@ -68,7 +70,7 @@ void draw()
     case(0):
     {
         front.display();
-        simState =1;
+        simState =3;
         break;
     }//end case(0)
      
@@ -94,16 +96,24 @@ void draw()
      case(3):
      {
        planet.display();
-       //planet.display();
        
        smallOuterLine();
        topPost();
        largeOuterLine();
        details();
        arrows();
+       
        radarDetails();
-
-     }//end case(3)
+       planetCoordinates();
+       
+       //simState = 4;
+     }//end case 3
+     
+     /*case(4):
+     {
+       buttonControls();
+       
+     }*/
      
 
    
@@ -115,9 +125,30 @@ void mousePressed()
 {
   down = true;
   
-  if(mouseX > 50)
+  if(mouseX > 10 && mouseX < 90)
   {
-    refuel = 1;
+    //IF ITS OVER THE FUEL BUTTON
+    if(mouseY > 270 && mouseY < 335)
+    {
+      fuel = 100;
+    }
+    
+    //IF IT IS OVER THE OXYGEN BUTTON
+    if(mouseY > 345 && mouseY < 405)
+    {
+      oxy = 100;
+    }
+    
+    //IF IT IS OVER THE SPEED BUTTON
+    if(mouseY > 410 && mouseY < 480)
+    {
+      speed += 1;
+      
+      if(speed == 4)
+      {
+        speed = 1;
+      }
+    }
   }
 }
 
@@ -228,22 +259,133 @@ void topPost()
   rect(width/2-150, 30, 300, 130);
   triangle(width/2-200, 100, width/2-150, 30, width/2-150, 160); //Left Tri
   triangle(width/2+200, 100, width/2+150, 30, width/2+150, 160); //Right Tri
-  
-  /*fill(0, 0, 255);
-  textSize(100);
-  textFont(intro);
-  text("[ Welcome back ]", 270, 280);*/
 
-       
+     
   //Read in info about planets here
-  fill(255);
-  textFont(infoMain);
-  text("Planet Earth", 385, 60);
+  //LEFT SIDE FIRST
   
-  textFont(info);
-  text("Population : ", 310, 100);
-  text("Description : Filled with", 310, 130);
-  text("60% water or somethin", 310, 150);
+  //EARTH
+  if(p > 0 && p < 950)
+  {
+    fill(255);
+    textFont(infoMain);
+    text("Planet Earth", 385, 60);
+    
+    textFont(info);
+    text("Population : ", 310, 100);
+    text("Description : Filled with", 310, 130);
+    text("60% water or somethin", 310, 150);
+  }
+  
+  //WHEN EARHT IS FULL CYCLE
+  //EARTH
+  if(p > 5600 && p < 5900)
+  {
+    fill(255);
+    textFont(infoMain);
+    text("Planet Earth", 385, 60);
+    
+    textFont(info);
+    text("Population : ", 310, 100);
+    text("Description : Filled with", 310, 130);
+    text("60% water or somethin", 310, 150);
+  }
+  
+  //LUTHREX
+  if(p > 1500 && p< 2300)
+  {
+    fill(255);
+    textFont(infoMain);
+    text("Planet Luthrex", 375, 60);
+    
+    textFont(info);
+    text("Population : Around 1 Billion ", 310, 100);
+    text("Description : Cloud species", 310, 130);
+    text("live here ", 310, 150);
+  }
+  
+  //NEXUS
+  if(p > 2800 && p< 3700)
+  {
+    fill(255);
+    textFont(infoMain);
+    text("Planet Nexus", 385, 60);
+    
+    textFont(info);
+    text("Population : 5 Queens ", 310, 100);
+    text("Description : Yaas Queen", 310, 130);
+    text("Yaaaaaaaaas ", 310, 150);
+  }
+  
+  //Zaran
+  if(p > 4200 && p< 5100)
+  {
+    fill(255);
+    textFont(infoMain);
+    text("Planet Zaran", 385, 60);
+    
+    textFont(info);
+    text("Population : 2,098 ", 310, 100);
+    text("Description : Full of Fire lovers", 310, 130);
+    text("No sustainable land. ", 310, 150);
+  }
+  
+  
+  
+  //NOW RIGHT SIDE
+  
+  //ZARAN
+  if(p > -1350 && p < -500)
+  {
+    fill(255);
+    textFont(infoMain);
+    text("Planet Zaran", 385, 60);
+    
+    textFont(info);
+    text("Population : 2,098 ", 310, 100);
+    text("Description : Full of Fire lovers", 310, 130);
+    text("No sustainable land. ", 310, 150);
+  }
+  
+  //LUTHREX
+  if(p > -4200 && p< -3300)
+  {
+    fill(255);
+    textFont(infoMain);
+    text("Planet Luthrex", 375, 60);
+    
+    textFont(info);
+    text("Population : Around 1 Billion ", 310, 100);
+    text("Description : Cloud species", 310, 130);
+    text("live here ", 310, 150);
+  }
+  
+  //NEXUS
+  if(p > -2800 && p < -1900)
+  {
+    fill(255);
+    textFont(infoMain);
+    text("Planet Nexus", 385, 60);
+    
+    textFont(info);
+    text("Population : 5 Queens ", 310, 100);
+    text("Description : Yaas Queen", 310, 130);
+    text("Yaaaaaaaaas ", 310, 150);
+  }
+  
+  //WHEN EARHT IS FULL CYCLE
+  //EARTH
+  if(p > -5100 && p < -4700)
+  {
+    fill(255);
+    textFont(infoMain);
+    text("Planet Earth", 385, 60);
+    
+    textFont(info);
+    text("Population : ", 310, 100);
+    text("Description : Filled with", 310, 130);
+    text("60% water or somethin", 310, 150);
+  }
   
 }
 
@@ -294,8 +436,7 @@ void details()
   
   if(fuel < 0)
   {
-    refuel = 1; //refuel is true
-    fuel = 100;
+    fuel += 1;
   }
   
   fill(255);
@@ -322,7 +463,7 @@ void details()
   
   //SPEED LEVEL
   fill(0);
-  text(speed, 45, 450);
+  text(speed+"", 45, 450);
   
   fill(255);
   text("Speed Level", 100, 450);
@@ -369,7 +510,21 @@ void arrows()
   {
     if(keyCode == LEFT)
     {
-      p += 10;
+      if(speed == 1)
+      {
+        p += 10;
+      }
+      
+      if(speed == 2)
+      {
+        p += 50;
+      }
+      
+      if(speed == 3)
+      {
+        p += 150;
+      }
+      
       arrowChangeLeft = 255;
       arrowChangeRight = 35;
       arrowChangeUp = 35;
@@ -380,7 +535,20 @@ void arrows()
     
     if(keyCode == RIGHT)
     {
-      p -= 10;
+      if(speed == 1)
+      {
+        p -= 10;
+      }
+      
+      if(speed == 2)
+      {
+        p -= 50;
+      }
+      
+      if(speed == 3)
+      {
+        p -= 150;
+      }
       arrowChangeRight = 255;
       arrowChangeLeft = 35;
       arrowChangeUp = 35;
@@ -429,3 +597,37 @@ void radarDetails()
   ellipse(width-85, height-240, 10, 10);
   ellipse(width-85, height-180, 10, 10);
 }
+
+void planetCoordinates()
+{
+  table = loadTable("planetPos.csv","header");
+  
+  for(TableRow row : table.rows() )
+  {
+    PlanetPos planet = new PlanetPos(row);
+    planets.add(planet);
+  }
+  
+  for(PlanetPos planet:planets)
+  {
+    fill(255,255,0);
+    text( (planet.name), planet.xPos, planet.yPos);
+  }
+    
+}
+
+ArrayList<PlanetPos> planets = new ArrayList<PlanetPos>();
+
+/*void buttonControls()
+{
+  stroke(255,255,0);
+  line(10, 300, 90, 300); // X > 10 && X < 90  SAME FOR ALL
+  line(20, 270, 20, 335); //Y > 270 && Y < 335  FIRST BOX
+  
+  line(20, 345, 20, 405); // Y > 345 && Y < 405 MID BOX
+  
+  line(20, 410, 20, 480); // Y > 410 && Y < 480
+  
+  
+  
+}*/
