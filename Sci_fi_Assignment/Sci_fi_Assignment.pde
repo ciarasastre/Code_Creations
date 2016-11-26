@@ -45,6 +45,10 @@ float time = 0;
 float moveX = 815;
 float moveY = 330;
 
+
+int xList = 600;
+int yList = 490;
+
 //This section is incharge of starting up each sequence
 boolean stars = false;
 boolean down = false;
@@ -104,9 +108,12 @@ void draw()
        arrows();
        
        radarDetails();
-       planetCoordinates();
+       buttonControls();
        
-       simState = 6;
+       loadCoordinates();
+       showCoordinates();
+       
+       
        break;
      }//end case 3
      
@@ -120,11 +127,6 @@ void draw()
      {
        //This function is for fuel DONT MOVE
        break;
-     }
-     
-     case(6):
-     {
-       buttonControls();
      }
 
    
@@ -440,7 +442,7 @@ void details()
   //Create small circles on left
   fill(0, 255, 0); //green
   ellipse(50, 305, lCircSize, lCircSize);
-  
+
   //FUEL LEVEL
   textFont(info);
   fill(0);
@@ -467,7 +469,7 @@ void details()
   //OXYGEN LEVEL
   fill(0);
   text(oxy+"%", 30, 380);
-  oxy -= 10;
+  oxy -= 1;
   
   if(oxy < 0)
   {
@@ -623,41 +625,6 @@ void radarDetails()
   ellipse(width-85, height-180, 10, 10);
 }
 
-void planetCoordinates()
-{
-  table = loadTable("planetPos.csv","header");
-  
-  for(TableRow row : table.rows() )
-  {
-    PlanetPos planet = new PlanetPos(row);
-    planets.add(planet);
-  }
-  
-  for(PlanetPos planet:planets)
-  {
-    fill(255,255,0);
-    text( (planet.name), planet.xPos, planet.yPos);
-    
-    fill(255,255,0);
-    text((planet.name), xList+20, yList);
-    yList += 20;
-  }
-  
-  for(PlanetPos planet:planets)
-  {
-    text(("X:"+planet.xPos+","), xList+120, yList-80);
-    yList += 20;
-  }
-  
-  for(PlanetPos planet:planets)
-  {
-    text(("Y:"+planet.yPos+","), xList+210, yList-160);
-    yList += 20;
-  }
-    
-    
-}
-
 ArrayList<PlanetPos> planets = new ArrayList<PlanetPos>();
 
 void lowOxy()
@@ -670,14 +637,78 @@ void lowOxy()
 
 void buttonControls()
 {
-  stroke(255,0,0);
+  //Resets area
+  fill(0);
+  stroke(0);
+  rect(785, 290, 70, 25);
   
-  line(805, 360, 825, 360); //EARTH
-  
-  line(805, 420, 825, 420); // NEXUS 420 420
-    
-  
-}
+  fill(0,0,255);
 
-int xList = 600;
-int yList = 490;
+  //FIRST LUTHREX AND ZARAN
+  if(mouseY > 375 && mouseY < 395)
+  {
+    //PRINTF LUTHREX
+    if(mouseX > 770 && mouseX < 790)
+    {
+      text("Luthrex", 785, 315);
+    }
+    
+    //PRINTF ZARAN
+    if(mouseX > 850 && mouseX < 870)
+    {
+      text("Zaran", 790, 315);
+    }
+  }
+      
+  
+  // THEN EARTH AND NEXUS
+  if(mouseX > 805 && mouseX < 825)
+  {
+    //PRINT EARTH
+    if(mouseY > 350 && mouseY <370)
+    {
+      text("Earth", 790, 315);
+    }
+    
+    //PRINT NEXUS
+    if(mouseY > 410 && mouseY < 430)
+    { 
+      text("Nexus", 790, 315);
+    }
+      
+  }
+}
+    
+void loadCoordinates()
+{
+  table = loadTable("planetPos.csv","header");
+    
+  for(TableRow row : table.rows() )
+  {
+    PlanetPos planet = new PlanetPos(row);
+    planets.add(planet);
+  }
+}
+  
+void showCoordinates()
+{ 
+      for(PlanetPos planet:planets)
+      {
+        fill(255,255,0);
+         text((planet.name), xList+20, yList);
+         yList += 20;
+      }
+        
+      for(PlanetPos planet:planets)
+      {
+        text(("X:"+planet.xPos+","), xList+120, yList-80);
+        yList += 20;
+      }
+        
+      for(PlanetPos planet:planets)
+      {
+        text(("Y:"+planet.yPos+","), xList+210, yList-160);
+        yList += 20;
+      }
+    
+}

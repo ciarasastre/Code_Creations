@@ -105,7 +105,7 @@ class PlanetData
       popMatrix();
       
       
-      if(p == -5150)
+      if(p < -5150 && p > -5600)
       {
         p = 450;
       }
@@ -154,7 +154,7 @@ class PlanetData
       shape(globe); //Controls size
       popMatrix();
       
-      if(p == 6000)
+      if(p > 6000 && p < 6500)
       {
         p = 450;
       }
@@ -163,5 +163,6 @@ class PlanetData
     println("P = %f", p);
      
   }//end void display
+  
   
 }//end class
