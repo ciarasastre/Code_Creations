@@ -105,13 +105,13 @@ void draw()
        
        radarDetails();
        planetCoordinates();
+       
+       simState = 6;
        break;
-       //simState = 4;
      }//end case 3
      
      case(4):
      {
-       //buttonControls();
        lowOxy();
        break;
      }
@@ -120,6 +120,11 @@ void draw()
      {
        //This function is for fuel DONT MOVE
        break;
+     }
+     
+     case(6):
+     {
+       buttonControls();
      }
 
    
@@ -602,12 +607,12 @@ void arrows()
 void radarDetails()
 {
   stroke(255);
-  line(width-85, height-215, moveX, moveY);//Top
+  //line(width-85, height-215, moveX, moveY);//Top
   
-  line(width-85, height-215, moveX+55, moveY+55); //Right
-  line(width-85, height-215, moveX-55, moveY+55); //Left
+  //line(width-85, height-215, moveX+55, moveY+55); //Right
+  //line(width-85, height-215, moveX-55, moveY+55); //Left
   
-  line(width-85, height-215, moveX, moveY+110); //Bottom
+  //line(width-85, height-215, moveX, moveY+110); //Bottom
   
   fill(0, 0, 255);
   strokeWeight(1);
@@ -632,7 +637,24 @@ void planetCoordinates()
   {
     fill(255,255,0);
     text( (planet.name), planet.xPos, planet.yPos);
+    
+    fill(255,255,0);
+    text((planet.name), xList+20, yList);
+    yList += 20;
   }
+  
+  for(PlanetPos planet:planets)
+  {
+    text(("X:"+planet.xPos+","), xList+120, yList-80);
+    yList += 20;
+  }
+  
+  for(PlanetPos planet:planets)
+  {
+    text(("Y:"+planet.yPos+","), xList+210, yList-160);
+    yList += 20;
+  }
+    
     
 }
 
@@ -646,16 +668,16 @@ void lowOxy()
   rect(0, 0,width, height);
 }
 
-/*void buttonControls()
+void buttonControls()
 {
-  stroke(255,255,0);
-  line(10, 300, 90, 300); // X > 10 && X < 90  SAME FOR ALL
-  line(20, 270, 20, 335); //Y > 270 && Y < 335  FIRST BOX
+  stroke(255,0,0);
   
-  line(20, 345, 20, 405); // Y > 345 && Y < 405 MID BOX
+  line(805, 360, 825, 360); //EARTH
   
-  line(20, 410, 20, 480); // Y > 410 && Y < 480
+  line(805, 420, 825, 420); // NEXUS 420 420
+    
   
-  
-  
-}*/
+}
+
+int xList = 600;
+int yList = 490;
