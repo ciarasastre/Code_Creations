@@ -76,13 +76,13 @@ class PlanetData
       pushMatrix(); 
       translate(p+2100, height*0.15, z-1000); // X, Y,Z Z controls how far away it is height*0.35
       rotateY(PI * frameCount / 500); //Rotates itself
-      shape(globe5); //Controls size
+      shape(globe4); //Controls size
       popMatrix(); 
       
       pushMatrix(); 
       translate(p+2800, height*0.35, z); // X, Y,Z Z controls how far away it is height*0.35
       rotateY(PI * frameCount / 500); //Rotates itself
-      shape(globe4); //Controls size
+      shape(globe5); //Controls size
       popMatrix(); 
       
       //second mini planet
@@ -125,14 +125,14 @@ class PlanetData
       pushMatrix(); 
       translate(p-2800, height*0.35, z); // X, Y,Z Z controls how far away it is height*0.35
       rotateY(PI * frameCount / 500); //Rotates itself
-      shape(globe4); //Controls size
+      shape(globe5); //Controls size
       popMatrix();
       
       //second mini planet
       pushMatrix(); 
       translate(p-4400, height*0.55, z-2000); // X, Y,Z Z controls how far away it is height*0.35
       rotateY(PI * frameCount / 500); //Rotates itself
-      shape(globe5); //Controls size
+      shape(globe4); //Controls size
       popMatrix(); 
 
       pushMatrix(); 

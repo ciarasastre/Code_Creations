@@ -1,6 +1,9 @@
 import ddf.minim.*;
+
 Minim minim; //audio context
 AudioPlayer beginning;
+AudioPlayer transition;
+AudioPlayer mainSong;
 
 PFont intro;
 PFont infoMain;
@@ -20,21 +23,27 @@ void setup()
   infoMain = loadFont("ARDESTINE-25.vlw");
   
   minim = new Minim(this);
-  beginning = minim.loadFile("begin.wav", 300);
+  beginning = minim.loadFile("begin.wav");
+  
+  transition = minim.loadFile("transition.wav");
+  
+  mainSong = minim.loadFile("main.wav");
   
   cursor(HAND);
   
   front = new FrontData();
   planet = new PlanetData();
   
-  beginning.rewind();
-  beginning.play();
-  
-  //startTime = millis();
   simState = 0;
   lights();
 
   background(0);
+  
+
+  beginning.rewind();
+  beginning.play();
+  
+  showCoordinates();
 
 }
 
@@ -57,6 +66,7 @@ float moveX = 815;
 float moveY = 330;
 int xList = 600;
 int yList = 490;
+int music = 0;
 
 //This section is incharge of starting up each sequence
 boolean down = false;
@@ -67,8 +77,6 @@ float rectX;
 float rectY;
 
 float lCircSize = 50;
-//float g = 100;
-//float h = 100;
 
 float p = 450;
 float z = -500;
@@ -82,8 +90,7 @@ void draw()
   {
     case(0):
     {
-        front.display();
-        //simState = 1;
+       front.display();
         break;
     }//end case(0)
      
@@ -121,6 +128,7 @@ void draw()
        loadCoordinates();
        showCoordinates();
        
+       
        break;
      }//end case 3
      
@@ -136,6 +144,7 @@ void draw()
        break;
      }
 
+
    
   }//end switch
   
@@ -144,6 +153,13 @@ void draw()
 void mousePressed()
 {
   down = true;
+  beginning.pause();
+  
+  //transition.rewind();
+  transition.play();
+  
+  //mainSong.rewind();
+  mainSong.play();
   
   if(mouseX > 10 && mouseX < 90)
   {
@@ -723,23 +739,29 @@ void loadCoordinates()
   
 void showCoordinates()
 { 
+      yList = 490; //makes first line stay in place
+      
       for(PlanetPos planet:planets)
       {
+        
         fill(255,255,0);
-         text((planet.name), xList+20, yList);
-         yList += 20;
-      }
+        text((planet.name), xList+20, yList);
+
+        text(("X:"+planet.xPos+","), xList+120, yList);
         
-      for(PlanetPos planet:planets)
-      {
-        text(("X:"+planet.xPos+","), xList+120, yList-80);
-        yList += 20;
-      }
+        text(("Y:"+planet.yPos+","), xList+210, yList);
         
-      for(PlanetPos planet:planets)
-      {
-        text(("Y:"+planet.yPos+","), xList+210, yList-160);
-        yList += 20;
+        if(yList < 550)
+        {
+          yList += 20;
+        }
+        else
+        {
+          yList =790; //Found a loop hole where this now goes off page
+        }
+
       }
-    
+      
+
+
 }
