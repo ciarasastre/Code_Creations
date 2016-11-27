@@ -160,6 +160,12 @@ void mousePressed()
   
   //mainSong.rewind();
   mainSong.play();
+  if(mainSong == null)
+  {
+    mainSong.rewind();
+    mainSong.play();
+  }
+    
   
   if(mouseX > 10 && mouseX < 90)
   {
@@ -199,7 +205,6 @@ void fade()
   rect(0, 0,width, height);
   
   time += 1;
-  println("%f", time);
   
   if(time > 65)
   {
@@ -493,7 +498,7 @@ void details()
   rect(35, 470, 30, 20); //final small rect connecter
   
   //Create small circles on left
-  fill(0, 255, 0); //green
+  fill(225,255,0); //Gold
   ellipse(50, 305, lCircSize, lCircSize);
 
   //FUEL LEVEL
@@ -516,7 +521,8 @@ void details()
   fill(255);
   text("Fuel Level", 100, 310);
   
-  fill(0, 0, 255); //Red
+  fill(41, 186, 224); //LIGHT Blue
+  fill(48,64,198); //Purple
   ellipse(50, 375, lCircSize, lCircSize);
   
   //OXYGEN LEVEL
@@ -538,7 +544,7 @@ void details()
   fill(255);
   text("Oxygen Level", 100, 380);
   
-  fill(255, 0, 0); //Blue
+  fill(41, 224, 85); //Green
   ellipse(50, 445, lCircSize, lCircSize);
   
   //SPEED LEVEL
