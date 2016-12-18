@@ -96,7 +96,7 @@ void draw()
      
      case(1):
      {
-       fill(0, 0, 255);
+       fill(128,48,198); //Purple
        textSize(100);
        textFont(intro);
        text("[ Welcome back ]", 270, 280);
@@ -521,8 +521,7 @@ void details()
   fill(255);
   text("Fuel Level", 100, 310);
   
-  fill(41, 186, 224); //LIGHT Blue
-  fill(48,64,198); //Purple
+  fill(128,48,198); //Purple
   ellipse(50, 375, lCircSize, lCircSize);
   
   //OXYGEN LEVEL
@@ -669,7 +668,7 @@ void radarDetails()
 {
   stroke(255);
   
-  fill(0, 0, 255);
+  fill(128,48,198); //Purple
   strokeWeight(1);
   ellipse(width-120, height-215, 10, 10);
   
