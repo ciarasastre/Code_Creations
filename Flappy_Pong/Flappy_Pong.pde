@@ -19,6 +19,10 @@ int ballColour = color(0);
 float gravity = 1;
 float ballSpeedVert = 0;
 
+//Friction Variables
+float airFriction = 0.001;
+float friction = 0.1;
+
 void setup()
 {
   size(500,500);
@@ -111,18 +115,26 @@ void applyGravity()
   ballSpeedVert += gravity;
   ballY += ballSpeedVert;
   
+  //Adding Friction
+  ballSpeedVert -= (ballSpeedVert * airFriction);
 }
 
 void makeBounceBottom(float surface)
 {
   ballY = surface - ( ballSize/2);
   ballSpeedVert *= -1;
+  
+  //Adding Friction
+  ballSpeedVert -= (ballSpeedVert * airFriction);
 }
 
 void makeBounceTop(float surface)
 {
   ballY = surface + ( ballSize/2);
   ballSpeedVert *= -1;
+  
+  //Adding Friction
+  ballSpeedVert -= (ballSpeedVert * airFriction);
 }
 
 //Keep ball in screen
