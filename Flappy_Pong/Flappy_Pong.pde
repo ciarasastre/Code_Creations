@@ -43,6 +43,7 @@ color wallColours = color(0);
 //[gapWallX, gapWallY, gapWallWidth, gapWallHeight]
 ArrayList<int[]> walls = new ArrayList<int[]>();
 
+//Health Variables
 void setup()
 {
   size(500,500);
@@ -270,6 +271,11 @@ void wallHandler()
     wallMover(i);
     wallDrawer(i);
   }
+  
+  for(int i =0; i<walls.size(); i++)
+  {
+    watchWallCollision(i);
+  }
 }
 
 void wallDrawer(int index)
@@ -304,3 +310,48 @@ void wallRemover(int index)
     walls.remove(index);
   }
 }
+
+/* watchWallCollision() method gets called for each wall on each loop.
+  We grab the coordinates of the gap wall, 
+  calculate the coordinates of the actual walls 
+  (top and bottom) and we check if the coordinates of the ball collides with the walls.
+*/
+void watchWallCollision(int index)
+{
+  int[] wall = walls.get(index);
+  
+  //get gap wall settings
+  int gapWallX = wall[0];
+  int gapWallY = wall[1];
+  int gapWallWidth = wall[2];
+  int gapWallHeight = wall[3];
+  
+  int wallTopX = gapWallX;
+  int wallTopY = 0;
+  int wallTopWidth = gapWallWidth;
+  int wallTopHeight = gapWallY;
+  
+  int wallBottomX = gapWallX;
+  int wallBottomY = gapWallY + gapWallHeight;
+  int wallBottomWidth = gapWallWidth;
+  int wallBottomHeight = height - (gapWallY+gapWallHeight);
+  
+  if(
+  (ballX+(ballSize/2)>wallTopX) &&
+    (ballX-(ballSize/2)<wallTopX+wallTopWidth) &&
+    (ballY+(ballSize/2)>wallTopY) &&
+    (ballY-(ballSize/2)<wallTopY+wallTopHeight)
+    ) {
+    // collides with upper wall
+  }
+  
+  if (
+    (ballX+(ballSize/2)>wallBottomX) &&
+    (ballX-(ballSize/2)<wallBottomX+wallBottomWidth) &&
+    (ballY+(ballSize/2)>wallBottomY) &&
+    (ballY-(ballSize/2)<wallBottomY+wallBottomHeight)
+    ) {
+    // collides with lower wall
+  }
+}
+  
