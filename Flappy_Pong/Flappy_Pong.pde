@@ -23,6 +23,11 @@ float ballSpeedVert = 0;
 float airFriction = 0.001;
 float friction = 0.1;
 
+//Racket Variables
+color racketColour = color(0);
+float racketWidth = 100;
+float racketHeight = 10;
+
 void setup()
 {
   size(500,500);
@@ -76,6 +81,7 @@ void gameScreen()
   drawBall();
   applyGravity();
   keepInScreen();
+  drawRacket();
 }
 
 void gameOverScreen()
@@ -152,4 +158,11 @@ void keepInScreen()
   {
     makeBounceTop(0);
   }
+}
+
+void drawRacket()
+{
+  fill(racketColour);
+  rectMode(CENTER);
+  rect(mouseX, mouseY, racketWidth, racketHeight);
 }
