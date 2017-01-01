@@ -1,5 +1,4 @@
-/* Program that explains the working mechanics of a game
-  using an example of flappy bird and pong mixed together
+/* Program that is a skeleton of a start of a game
 */
 
 /*********** VARIABLES *********/
@@ -10,20 +9,10 @@
 
 int gameScreen = 0;
 
-//Ball Variables
-float ballX, ballY;
-int ballSize = 20;
-int ballColour = color(0);
-
-//Gravity Variables
-float gravity = 1;
-float ballSpeedVert = 0;
 
 void setup()
 {
   size(500,500);
-  ballX = width/4;
-  ballY = height/5;
   
 }
 
@@ -69,9 +58,7 @@ void initScreen()
 void gameScreen()
 {
   background(255);
-  drawBall();
-  applyGravity();
-  keepInScreen();
+  
 }
 
 void gameOverScreen()
@@ -98,46 +85,4 @@ public void mousePressed()
 void startGame()
 {
   gameScreen = 1;
-}
-
-void drawBall()
-{
-  fill(ballColour);
-  ellipse(ballX, ballY, ballSize, ballSize);
-}
-
-void applyGravity()
-{
-  ballSpeedVert += gravity;
-  ballY += ballSpeedVert;
-  
-}
-
-void makeBounceBottom(float surface)
-{
-  ballY = surface - ( ballSize/2);
-  ballSpeedVert *= -1;
-}
-
-void makeBounceTop(float surface)
-{
-  ballY = surface + ( ballSize/2);
-  ballSpeedVert *= -1;
-}
-
-//Keep ball in screen
-void keepInScreen()
-{
-  
-  //Ball hits floor
-  if( ballY + (ballSize/2) > height)
-  {
-    makeBounceBottom(height);
-  }
-  
-  //Ball hits ceiling
-  if( ballY - (ballSize/2) < 0)
-  {
-    makeBounceTop(0);
-  }
 }
