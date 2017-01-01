@@ -18,7 +18,7 @@ int ballColour = color(0);
 //Gravity Variables
 float gravity = 1;
 float ballSpeedVert = 0;
-float ballSpeedHorizon = 10;
+float ballSpeedHorizon = 0;
 
 //Friction Variables
 float airFriction = 0.001;
@@ -29,6 +29,19 @@ color racketColour = color(0);
 float racketWidth = 100;
 float racketHeight = 10;
 int racketBounceRate = 20;
+
+//Wall Variables
+int wallSpeed = 5;
+int wallInterval = 1000;
+float lastAddTime = 0;
+int minGapHeight = 200;
+int maxGapHeight = 300;
+int wallWidth = 80;
+color wallColours = color(0);
+
+//This arraylist stores data of the gaps between the walls actual walls are drawn accordingly
+//[gapWallX, gapWallY, gapWallWidth, gapWallHeight]
+ArrayList<int[]> walls = new ArrayList<int[]>();
 
 void setup()
 {
@@ -86,6 +99,8 @@ void gameScreen()
   drawRacket();
   watchRacketBounce();
   applyHorizontalSpeed();
+  wallAdder();
+  wallHandler();
 }
 
 void gameOverScreen()
@@ -230,4 +245,62 @@ void makeBounceRight(float surface)
   ballX = surface - (ballSize/2);
   ballSpeedHorizon += -1;
   ballSpeedHorizon -= (ballSpeedHorizon * friction);
+}
+
+void wallAdder()
+{
+  if(millis() - lastAddTime > wallInterval)
+  {
+    int randHeight = round(random(minGapHeight, maxGapHeight) );
+    int randY = round(random(0, height-randHeight) );
+    
+    //{gapWallX, gapWallY, gapWallWidth, gapWallHeight}
+    
+    int[] randWall = {width, randY, wallWidth, randHeight};
+    walls.add(randWall);
+    lastAddTime = millis();
+  }
+}
+
+void wallHandler()
+{
+  for(int i=0; i< walls.size(); i++)
+  {
+    wallRemover(i);
+    wallMover(i);
+    wallDrawer(i);
+  }
+}
+
+void wallDrawer(int index)
+{
+  int[] wall = walls.get(index);
+  
+  //get gap wall settings
+  int gapWallX = wall[0];
+  int gapWallY = wall[1];
+  int gapWallWidth = wall[2];
+  int gapWallHeight = wall[3];
+  
+  //Draw actual walls
+  rectMode(CORNER);
+  fill(wallColours);
+  rect(gapWallX, 0, gapWallWidth, gapWallY);
+  rect(gapWallX, gapWallY + gapWallHeight, gapWallWidth, height - (gapWallY + gapWallHeight) );
+ 
+}
+
+void wallMover(int index)
+{
+  int[] wall = walls.get(index);
+  wall[0] -= wallSpeed;
+}
+
+void wallRemover(int index)
+{
+  int[] wall = walls.get(index);
+  if( wall[0] + wall[2] <= 0)
+  {
+    walls.remove(index);
+  }
 }
