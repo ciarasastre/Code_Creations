@@ -14,6 +14,7 @@ int gameScreen = 0;
 float ballX, ballY;
 int ballSize = 20;
 int ballColour = color(0);
+int score = 0;
 
 //Gravity Variables
 float gravity = 1;
@@ -114,7 +115,11 @@ void gameOverScreen()
 {
   background(0);
   textAlign(CENTER);
-  text("Game Over", height/2, width/2);
+  textSize(30);
+  text("Game Over", height/2, width/2 - 20);
+  textSize(15);
+  fill(255);
+  text("Click to Restart", height/2, width/2 + 10);
 }
 
 /******** INPUTS *****************/
@@ -125,6 +130,11 @@ public void mousePressed()
   if(gameScreen == 0)
   {
     startGame();
+  }
+  
+  if(gameScreen == 2)
+  {
+    restart();
   }
   
 }
@@ -265,9 +275,12 @@ void wallAdder()
     
     //{gapWallX, gapWallY, gapWallWidth, gapWallHeight}
     
-    int[] randWall = {width, randY, wallWidth, randHeight};
+    int[] randWall = {width, randY, wallWidth, randHeight, 0};
     walls.add(randWall);
     lastAddTime = millis();
+    
+    //Added another value at the end of the array
+    //int[] randWall = {width, randY, wallWidth, randHeight, 0};
   }
 }
 
@@ -333,6 +346,7 @@ void watchWallCollision(int index)
   int gapWallY = wall[1];
   int gapWallWidth = wall[2];
   int gapWallHeight = wall[3];
+  int wallScored = wall[4];
   
   int wallTopX = gapWallX;
   int wallTopY = 0;
@@ -343,6 +357,13 @@ void watchWallCollision(int index)
   int wallBottomY = gapWallY + gapWallHeight;
   int wallBottomWidth = gapWallWidth;
   int wallBottomHeight = height - (gapWallY+gapWallHeight);
+  
+  if(ballX > gapWallX + (gapWallWidth/2) && wallScored == 0)
+  {
+    wallScored = 1;
+    wall[4] = 1;
+    score();
+  }
   
   if(
   (ballX+(ballSize/2)>wallTopX) &&
@@ -396,4 +417,28 @@ void decreaseHealth()
   {
     gameScreen = 2;
   }
+}
+
+void score()
+{
+  score++;
+}
+
+void printScore()
+{
+  textAlign(CENTER);
+  fill(0);
+  textSize(30);
+  text(score, height/2, 50);
+}
+
+void restart()
+{
+  score = 0;
+  health = maxHealth;
+  ballX = width/4;
+  ballY = height/5;
+  lastAddTime = 0;
+  walls.clear();
+  gameScreen = 0;
 }
