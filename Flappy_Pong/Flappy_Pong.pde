@@ -109,6 +109,7 @@ void gameScreen()
   wallAdder();
   wallHandler();
   drawHealthBar();
+  printScore();
 }
 
 void gameOverScreen()
@@ -116,10 +117,12 @@ void gameOverScreen()
   background(0);
   textAlign(CENTER);
   textSize(30);
-  text("Game Over", height/2, width/2 - 20);
+  text("Final Score:", height/2, width/2 - 100);
+  text(score, height/2, width/2 - 50);
+  text("Game Over", height/2, width/2 + 20);
   textSize(15);
   fill(255);
-  text("Click to Restart", height/2, width/2 + 10);
+  text("Click to Restart", height/2, width/2 + 40);
 }
 
 /******** INPUTS *****************/
